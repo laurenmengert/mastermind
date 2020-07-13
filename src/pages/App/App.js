@@ -194,6 +194,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' render={() =>
             <GamePage
+              user={this.state.user}
               winTries={winTries}
               colors={colors[this.state.difficulty]}
               selColorIdx={this.state.selColorIdx}
