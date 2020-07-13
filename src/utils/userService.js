@@ -14,10 +14,13 @@ function signup(user) {
     throw new Error('Email already taken!');
   })
   .then(({ token }) => tokenService.setToken(token));
-  // same as
-  // .then( token => token.token );
+}
+
+function getUser() {
+  return tokenService.getUserFromToken();
 }
 
 export default {
-  signup
+  signup,
+  getUser,
 };
