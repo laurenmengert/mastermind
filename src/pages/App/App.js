@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import GamePage from '../../pages/GamePage/GamePage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import HighScoresPage from '../HighScoresPage/HighScoresPage';
@@ -239,10 +239,13 @@ class App extends Component {
             />
           }/>
           <Route exact path='/high-scores' render={() => 
-            <HighScoresPage
-              scores={this.state.scores}
-              handleUpdateScores={this.handleUpdateScores}
-            />
+            userService.getUser() ?
+              <HighScoresPage
+                scores={this.state.scores}
+                handleUpdateScores={this.handleUpdateScores}
+              />
+              :
+              <Redirect to='/login' />
           }/>
         </Switch>
       </div>
