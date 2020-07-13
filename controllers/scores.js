@@ -16,6 +16,7 @@ async function create(req, res) {
 }
 
 async function highScores(req, res) {
+  console.log(req.user)
   const scores = await Score.find({})
     .sort({numGuesses: 1, seconds: 1})
     // Default to a limit of 20 high scores
